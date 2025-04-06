@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 한입 챌린지 5기: Next.js
 
-## Getting Started
+![IMG_0533](https://github.com/user-attachments/assets/d32a84dd-c4e7-4f7d-a586-c326d2ff9ceb)
 
-First, run the development server:
+이 리포지토리는 이정환 강사님의 강의 [한 입 크기로 잘라먹는 Next.js(v15)](https://www.inflearn.com/course/%ED%95%9C%EC%9E%85-%ED%81%AC%EA%B8%B0-nextjs/dashboard)를 기반으로 진행되는 [한입 챌린지 5기](https://cafe.naver.com/f-e/cafes/31322207/articles/2831?menuid=74&referrerAllArticles=false)의 진행 과정에 대한 기록을 남기기 위해 만들어졌습니다. Day 8까지는 Page Router 기반의 과제를 진행했으며, 현재 리포지토리는 Day 9부터 시작되는 App Router 기반의 과제를 수행하기 위해 만들어졌습니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Day 9: App Router 버전 "한입-씨네마" 라우팅 설정하기
+[미션 링크](https://cafe.naver.com/winterlood/3413)
+[미션 제출 링크](https://cafe.naver.com/winterlood/3594)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Day 10
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[미션 제출 링크]()
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Day 11
 
-## Learn More
+[미션 제출 링크]()
 
-To learn more about Next.js, take a look at the following resources:
+## Day 12
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[미션 제출 링크]()
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Day 13
 
-## Deploy on Vercel
+[미션 제출 링크]()
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Day 14
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[미션 제출 링크]()
+
+## Day 15
+
+[미션 제출 링크]()
+
+## Day 16
+
+[미션 제출 링크]()
+
+## Day 17
+
+[미션 제출 링크]()
+
+## Day 18
+
+[미션 제출 링크]()
+
+## Day 19
+
+[미션 제출 링크]()
