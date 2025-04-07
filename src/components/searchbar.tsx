@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import styles from './searchbar.module.css';
 
 export default function SearchBar() {
 	const router = useRouter();
@@ -24,7 +25,7 @@ export default function SearchBar() {
 	};
 
 	return (
-		<div>
+		<div className={styles.container}>
 			<input
 				placeholder='검색어를 입력하세요...'
 				type='text'
