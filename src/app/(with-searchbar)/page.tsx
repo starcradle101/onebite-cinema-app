@@ -1,25 +1,55 @@
 import MovieItem from '@/components/movie-item';
 import styles from './page.module.css';
-import movies from '@/dummy.json';
+import { MovieData } from '@/types';
 
-export default function Home() {
+async function AllMovies() {
+	const response = await fetch(
+		`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie`,
+		{ cache: 'force-cache' }
+	);
+	if (!response.ok) {
+		return <div>오류가 발생했습니다...</div>;
+	}
+	const allMovies: MovieData[] = await response.json();
+
+	return (
+		<div className={styles.all_container}>
+			{allMovies.map((movie) => (
+				<MovieItem key={`all-${movie.id}`} {...movie} />
+			))}
+		</div>
+	);
+}
+
+async function RecommendedMovies() {
+	const response = await fetch(
+		`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/random`,
+		{ next: { revalidate: 3600 } }
+	);
+	if (!response.ok) {
+		return <div>오류가 발생했습니다...</div>;
+	}
+	const recommendedMovies: MovieData[] = await response.json();
+
+	return (
+		<div className={styles.reco_conatiner}>
+			{recommendedMovies.map((movie) => (
+				<MovieItem key={`reco-${movie.id}`} {...movie} />
+			))}
+		</div>
+	);
+}
+
+export default async function Home() {
 	return (
 		<div className={styles.conatiner}>
 			<section>
 				<h3>지금 가장 추천하는 영화</h3>
-				<div className={styles.reco_conatiner}>
-					{movies.slice(0, 3).map((movie) => (
-						<MovieItem key={`reco-${movie.id}`} {...movie} />
-					))}
-				</div>
+				<RecommendedMovies />
 			</section>
 			<section>
 				<h3>등록된 모든 영화</h3>
-				<div className={styles.all_container}>
-					{movies.map((movie) => (
-						<MovieItem key={`all-${movie.id}`} {...movie} />
-					))}
-				</div>
+				<AllMovies />
 			</section>
 		</div>
 	);
