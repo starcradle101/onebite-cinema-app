@@ -9,7 +9,7 @@ export default async function Page({
 	const { id } = await params;
 	const response = await fetch(
 		`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${id}`,
-		{ next: { revalidate: 3600 } }
+		{ cache: 'force-cache' }
 	);
 	if (!response.ok) {
 		return <div>오류가 발생했습니다...</div>;
