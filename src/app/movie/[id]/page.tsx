@@ -1,5 +1,25 @@
+import { notFound } from 'next/navigation';
 import styles from './page.module.css';
 import { MovieData } from '@/types';
+
+export async function generateStaticParams() {
+	const response = await fetch(
+		`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie`,
+		{
+			cache: 'force-cache',
+		}
+	);
+
+	if (!response.ok) {
+		throw new Error('정적 페이지 생성을 위한 데이터 페칭 실패');
+	}
+
+	const movies: MovieData[] = await response.json();
+
+	return movies.map((movie) => ({
+		id: movie.id.toString(),
+	}));
+}
 
 export default async function Page({
 	params,
@@ -12,7 +32,9 @@ export default async function Page({
 		{ cache: 'force-cache' }
 	);
 	if (!response.ok) {
-		return <div>오류가 발생했습니다...</div>;
+		if (response.status === 404) {
+			notFound();
+		}
 	}
 
 	const movieDetail: MovieData = await response.json();
