@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 	);
 
 	if (!response.ok) {
-		throw new Error('정적 페이지 생성을 위한 데이터 페칭 실패');
+		throw new Error(response.statusText);
 	}
 
 	const movies: MovieData[] = await response.json();

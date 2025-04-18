@@ -1,13 +1,7 @@
 import MovieItem from '@/components/movie-item';
 import styles from './page.module.css';
 import { MovieData } from '@/types';
-import { Suspense } from 'react';
-import MovieItemSkeleton from '@/components/skeleton/movie-item-skeleton';
-import RecommendedSkeleton from '@/components/skeleton/recommended-skeleton';
-import AllMoviesSkeleton from '@/components/skeleton/all-movies-skeleton';
 import { Metadata } from 'next';
-
-export const dynamic = 'force-dynamic';
 
 async function AllMovies() {
 	const response = await fetch(
@@ -62,15 +56,11 @@ export default async function Home() {
 		<div className={styles.conatiner}>
 			<section>
 				<h3>지금 가장 추천하는 영화</h3>
-				<Suspense fallback={<RecommendedSkeleton />}>
-					<RecommendedMovies />
-				</Suspense>
+				<RecommendedMovies />
 			</section>
 			<section>
 				<h3>등록된 모든 영화</h3>
-				<Suspense fallback={<AllMoviesSkeleton />}>
-					<AllMovies />
-				</Suspense>
+				<AllMovies />
 			</section>
 		</div>
 	);
