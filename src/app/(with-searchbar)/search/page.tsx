@@ -3,6 +3,7 @@ import styles from './page.module.css';
 import { MovieData } from '@/types';
 import { Suspense } from 'react';
 import RecommendedSkeleton from '@/components/skeleton/recommended-skeleton';
+import { Metadata } from 'next';
 
 async function SearchResult({ q }: { q: string }) {
 	const response = await fetch(
@@ -18,10 +19,27 @@ async function SearchResult({ q }: { q: string }) {
 	return (
 		<div className={styles.container}>
 			{searchResults.map((movie) => (
-				<MovieItem key={movie.id} {...movie} />
+				<MovieItem key={movie.id} {...movie} size='large' />
 			))}
 		</div>
 	);
+}
+
+export async function generateMetadata({
+	searchParams,
+}: {
+	searchParams: Promise<{ q?: string }>;
+}): Promise<Metadata> {
+	const { q } = await searchParams;
+	return {
+		title: `${q}: 한입 씨네마`,
+		description: `${q} 검색 결과입니다.`,
+		openGraph: {
+			title: `${q}: 한입 씨네마`,
+			description: `${q} 검색 결과입니다.`,
+			images: ['/thumbnail.png'],
+		},
+	};
 }
 
 export default async function Page({

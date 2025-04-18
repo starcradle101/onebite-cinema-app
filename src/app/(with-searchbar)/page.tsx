@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import MovieItemSkeleton from '@/components/skeleton/movie-item-skeleton';
 import RecommendedSkeleton from '@/components/skeleton/recommended-skeleton';
 import AllMoviesSkeleton from '@/components/skeleton/all-movies-skeleton';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,7 +22,7 @@ async function AllMovies() {
 	return (
 		<div className={styles.all_container}>
 			{allMovies.map((movie) => (
-				<MovieItem key={`all-${movie.id}`} {...movie} />
+				<MovieItem key={`all-${movie.id}`} {...movie} size='small' />
 			))}
 		</div>
 	);
@@ -40,11 +41,21 @@ async function RecommendedMovies() {
 	return (
 		<div className={styles.reco_conatiner}>
 			{recommendedMovies.map((movie) => (
-				<MovieItem key={`reco-${movie.id}`} {...movie} />
+				<MovieItem key={`reco-${movie.id}`} {...movie} size='large' />
 			))}
 		</div>
 	);
 }
+
+export const metadata: Metadata = {
+	title: '한입 씨네마',
+	description: '한입 씨네마에 등록된 영화를 만나보세요!',
+	openGraph: {
+		title: '한입 씨네마',
+		description: '한입 씨네마에 등록된 영화를 만나보세요!',
+		images: ['/thumbnail.png'],
+	},
+};
 
 export default async function Home() {
 	return (
